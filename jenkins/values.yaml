@@ -9,6 +9,12 @@ controller:
     - google-source-plugin:latest
     - google-kubernetes-engine:latest
     - google-storage-plugin:latest
+    - blueocean:latest
+    - maven-plugin:latest
+    - junit:latest
+    - plain-credentials:latest
+    - ssh-credentials:latest
+    - strict-crumb-issuer:latest
   resources:
     requests:
       cpu: "50m"
@@ -17,7 +23,11 @@ controller:
       cpu: "1"
       memory: "3500Mi"
   javaOpts: "-Xms3500m -Xmx3500m"
-  serviceType: ClusterIP
+  serviceType: LoadBalancer
+  csrf:
+    defaultCrumbIssuer:
+      enabled: false
+      proxyCompatability: true
 agent:
   resources:
     requests:
